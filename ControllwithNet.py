@@ -1,3 +1,4 @@
+import cherrypy
 import readchar
 import signal, os
 import RPi.GPIO as GPIO
