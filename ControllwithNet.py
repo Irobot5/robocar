@@ -58,7 +58,7 @@ class Fuckmylife(object):
 		GPIO.output(BIN1, GPIO.LOW)
 		GPIO.output(BIN2, GPIO.HIGH)
 		GPIO.output(PWMB, GPIO.HIGH)
-		rightmotor.ChangeDutyCycle(75)
+		rightmotor.ChangeDutyCycle(85)
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
 
@@ -70,7 +70,7 @@ class Fuckmylife(object):
 		GPIO.output(BIN1, GPIO.HIGH)
 		GPIO.output(BIN2, GPIO.LOW)
 		GPIO.output(PWMB, GPIO.HIGH)
-		rightmotor.ChangeDutyCycle(75)
+		rightmotor.ChangeDutyCycle(85)
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
 
