@@ -16,7 +16,6 @@ BIN2 = 18
 PWMB = 27
 
 
-
 # Pin Setup:
 GPIO.setmode(GPIO.BCM)  # Broadcom pin-numbering scheme
 GPIO.setwarnings(False)
