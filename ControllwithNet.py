@@ -51,10 +51,6 @@ class Fuckmylife(object):
 		return WASDrightplace
 
 	@cherrypy.expose
-	def blank(self):
-		return WASDrightplace
-
-	@cherrypy.expose
 	def forward(self):
 		GPIO.output(AIN1, GPIO.LOW)
 		GPIO.output(AIN2, GPIO.HIGH)
