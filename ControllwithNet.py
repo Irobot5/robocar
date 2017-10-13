@@ -3,8 +3,8 @@ import signal, os
 import RPi.GPIO as GPIO
 import time
 
-file = open('WASDhtml.html')
-WASDhtml = file.read()
+file = open('WASDrightplace.html')
+WASDrightplace = file.read()
 file.close()
 
 AIN1 = 2
@@ -48,11 +48,11 @@ leftmotor = GPIO.PWM(PWMB, 50)
 class Fuckmylife(object):
     @cherrypy.expose
     def index(self):
-	    return WASDhtml
+	    return WASDrightplace
 
     @cherrypy.expose
     def blank(self):
-	    return WASDhtml
+	    return WASDrightplace
 
     @cherrypy.expose
 	def forward(self):
@@ -64,7 +64,7 @@ class Fuckmylife(object):
 	    GPIO.output(PWMB, GPIO.HIGH)
 	    rightmotor.ChangeDutyCycle(100)
 	    leftmotor.ChangeDutyCycle(100)
-	    return WASDhtml
+	    return WASDrightplace
 
 	@cherrypy.expose
 	def backward(self):
@@ -76,7 +76,7 @@ class Fuckmylife(object):
 	    GPIO.output(PWMB, GPIO.HIGH)
 	    rightmotor.ChangeDutyCycle(100)
 	    leftmotor.ChangeDutyCycle(100)
-	    return WASDhtml
+	    return WASDrightplace
 
 	@cherrypy.expose
 	def right(self):
@@ -88,7 +88,7 @@ class Fuckmylife(object):
 	    GPIO.output(PWMB, GPIO.HIGH)
 	    rightmotor.ChangeDutyCycle(50)
 	    leftmotor.ChangeDutyCycle(50)
-	    return WASDhtml
+	    return WASDrightplace
 
 	@cherrypy.expose
 	def left(self):
@@ -100,7 +100,7 @@ class Fuckmylife(object):
 	    GPIO.output(PWMB, GPIO.HIGH)
 	    rightmotor.ChangeDutyCycle(50)
 	    leftmotor.ChangeDutyCycle(50)
-	    return WASDhtml
+	    return WASDrightplace
 
 	@cherrypy.expose
 	def stop(self):
@@ -112,7 +112,7 @@ class Fuckmylife(object):
 	    GPIO.output(PWMB, GPIO.LOW)
 	    rightmotor.ChangeDutyCycle(0)
 	    leftmotor.ChangeDutyCycle(0)
-	    return WASDhtml
+	    return WASDrightplace
 # program
 
 rightmotor.start(0)
