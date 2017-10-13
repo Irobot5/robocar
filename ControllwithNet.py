@@ -58,7 +58,7 @@ class Fuckmylife(object):
 		GPIO.output(BIN1, GPIO.LOW)
 		GPIO.output(BIN2, GPIO.HIGH)
 		GPIO.output(PWMB, GPIO.HIGH)
-		rightmotor.ChangeDutyCycle(100)
+		rightmotor.ChangeDutyCycle(85)
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
 
@@ -70,12 +70,12 @@ class Fuckmylife(object):
 		GPIO.output(BIN1, GPIO.HIGH)
 		GPIO.output(BIN2, GPIO.LOW)
 		GPIO.output(PWMB, GPIO.HIGH)
-		rightmotor.ChangeDutyCycle(100)
+		rightmotor.ChangeDutyCycle(85)
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
 
 	@cherrypy.expose
-	def right(self):
+	def left(self):
 		GPIO.output(AIN1, GPIO.HIGH)
 		GPIO.output(AIN2, GPIO.LOW)
 		GPIO.output(PWMA, GPIO.HIGH)
@@ -87,7 +87,7 @@ class Fuckmylife(object):
 		return WASDrightplace
 
 	@cherrypy.expose
-	def left(self):
+	def right(self):
 		GPIO.output(AIN1, GPIO.LOW)
 		GPIO.output(AIN2, GPIO.HIGH)
 		GPIO.output(PWMA, GPIO.HIGH)
