@@ -29,14 +29,14 @@ GPIO.setup(PWMB, GPIO.OUT)
 
 
 def handler(signum, frame):  # stop when ctrl-c is recieved
-    print
-    'Signal handler called with signal', signum
-    print
-    'exiting'
-    GPIO.output(PWMA, GPIO.LOW)
-    GPIO.output(PWMB, GPIO.LOW)
-    GPIO.cleanup()
-    exit(0)
+	print
+	'Signal handler called with signal', signum
+	print
+	'exiting'
+	GPIO.output(PWMA, GPIO.LOW)
+	GPIO.output(PWMB, GPIO.LOW)
+	GPIO.cleanup()
+	exit(0)
 
 
 # When recieving ctrl-C
@@ -47,73 +47,73 @@ rightmotor = GPIO.PWM(PWMA, 50)
 leftmotor = GPIO.PWM(PWMB, 50)
 
 class Fuckmylife(object):
-    @cherrypy.expose
-    def index(self):
-	    return WASDrightplace
+	@cherrypy.expose
+	def index(self):
+		return WASDrightplace
 
-    @cherrypy.expose
-    def blank(self):
-	    return WASDrightplace
+	@cherrypy.expose
+	def blank(self):
+		return WASDrightplace
 
-    @cherrypy.expose
+	@cherrypy.expose
 	def forward(self):
-	    GPIO.output(AIN1, GPIO.LOW)
-	    GPIO.output(AIN2, GPIO.HIGH)
-	    GPIO.output(PWMA, GPIO.HIGH)
-	    GPIO.output(BIN1, GPIO.LOW)
-	    GPIO.output(BIN2, GPIO.HIGH)
-	    GPIO.output(PWMB, GPIO.HIGH)
-	    rightmotor.ChangeDutyCycle(100)
-	    leftmotor.ChangeDutyCycle(100)
-	    return WASDrightplace
+		GPIO.output(AIN1, GPIO.LOW)
+		GPIO.output(AIN2, GPIO.HIGH)
+		GPIO.output(PWMA, GPIO.HIGH)
+		GPIO.output(BIN1, GPIO.LOW)
+		GPIO.output(BIN2, GPIO.HIGH)
+		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.ChangeDutyCycle(100)
+		leftmotor.ChangeDutyCycle(100)
+		return WASDrightplace
 
 	@cherrypy.expose
 	def backward(self):
-	    GPIO.output(AIN1, GPIO.HIGH)
-	    GPIO.output(AIN2, GPIO.LOW)
-	    GPIO.output(PWMA, GPIO.HIGH)
-	    GPIO.output(BIN1, GPIO.HIGH)
-	    GPIO.output(BIN2, GPIO.LOW)
-	    GPIO.output(PWMB, GPIO.HIGH)
-	    rightmotor.ChangeDutyCycle(100)
-	    leftmotor.ChangeDutyCycle(100)
-	    return WASDrightplace
+		GPIO.output(AIN1, GPIO.HIGH)
+		GPIO.output(AIN2, GPIO.LOW)
+		GPIO.output(PWMA, GPIO.HIGH)
+		GPIO.output(BIN1, GPIO.HIGH)
+		GPIO.output(BIN2, GPIO.LOW)
+		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.ChangeDutyCycle(100)
+		leftmotor.ChangeDutyCycle(100)
+		return WASDrightplace
 
 	@cherrypy.expose
 	def right(self):
-	    GPIO.output(AIN1, GPIO.HIGH)
-	    GPIO.output(AIN2, GPIO.LOW)
-	    GPIO.output(PWMA, GPIO.HIGH)
-	    GPIO.output(BIN1, GPIO.LOW)
-	    GPIO.output(BIN2, GPIO.HIGH)
-	    GPIO.output(PWMB, GPIO.HIGH)
-	    rightmotor.ChangeDutyCycle(50)
-	    leftmotor.ChangeDutyCycle(50)
-	    return WASDrightplace
+		GPIO.output(AIN1, GPIO.HIGH)
+		GPIO.output(AIN2, GPIO.LOW)
+		GPIO.output(PWMA, GPIO.HIGH)
+		GPIO.output(BIN1, GPIO.LOW)
+		GPIO.output(BIN2, GPIO.HIGH)
+		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.ChangeDutyCycle(50)
+		leftmotor.ChangeDutyCycle(50)
+		return WASDrightplace
 
 	@cherrypy.expose
 	def left(self):
-	    GPIO.output(AIN1, GPIO.LOW)
-	    GPIO.output(AIN2, GPIO.HIGH)
-	    GPIO.output(PWMA, GPIO.HIGH)
-	    GPIO.output(BIN1, GPIO.HIGH)
-	    GPIO.output(BIN2, GPIO.LOW)
-	    GPIO.output(PWMB, GPIO.HIGH)
-	    rightmotor.ChangeDutyCycle(50)
-	    leftmotor.ChangeDutyCycle(50)
-	    return WASDrightplace
+		GPIO.output(AIN1, GPIO.LOW)
+		GPIO.output(AIN2, GPIO.HIGH)
+		GPIO.output(PWMA, GPIO.HIGH)
+		GPIO.output(BIN1, GPIO.HIGH)
+		GPIO.output(BIN2, GPIO.LOW)
+		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.ChangeDutyCycle(50)
+		leftmotor.ChangeDutyCycle(50)
+		return WASDrightplace
 
 	@cherrypy.expose
 	def stop(self):
-	    GPIO.output(AIN1, GPIO.LOW)
-	    GPIO.output(AIN2, GPIO.HIGH)
-	    GPIO.output(PWMA, GPIO.LOW)
-	    GPIO.output(BIN1, GPIO.LOW)
-	    GPIO.output(BIN2, GPIO.HIGH)
-	    GPIO.output(PWMB, GPIO.LOW)
-	    rightmotor.ChangeDutyCycle(0)
-	    leftmotor.ChangeDutyCycle(0)
-	    return WASDrightplace
+		GPIO.output(AIN1, GPIO.LOW)
+		GPIO.output(AIN2, GPIO.HIGH)
+		GPIO.output(PWMA, GPIO.LOW)
+		GPIO.output(BIN1, GPIO.LOW)
+		GPIO.output(BIN2, GPIO.HIGH)
+		GPIO.output(PWMB, GPIO.LOW)
+		rightmotor.ChangeDutyCycle(0)
+		leftmotor.ChangeDutyCycle(0)
+		return WASDrightplace
 # program
 
 rightmotor.start(0)
@@ -121,30 +121,30 @@ leftmotor.start(0)
 
 goornot = raw_input("would you like to start? y/n:")
 if goornot == "y":
-        key = readchar.readkey()
-        while True:
-            if (key=="w"):
-                forward()
-                print("forward")
-                key = readchar.readkey()
-            elif (key=="s"):
-                backward()
-                print("backward")
-                key = readchar.readkey()
-            elif(key=="a"):
-                left()
-                print("left")
-                key = readchar.readkey()
-            elif (key=="d"):
-                right()
-                print("right")
-                key = readchar.readkey()
-            elif (key=="c"):
-                stop()
-                print("stopped")
-                key = readchar.readkey()
-            else:
-                stop()
-                break
+		key = readchar.readkey()
+		while True:
+			if (key=="w"):
+				forward()
+				print("forward")
+				key = readchar.readkey()
+			elif (key=="s"):
+				backward()
+				print("backward")
+				key = readchar.readkey()
+			elif(key=="a"):
+				left()
+				print("left")
+				key = readchar.readkey()
+			elif (key=="d"):
+				right()
+				print("right")
+				key = readchar.readkey()
+			elif (key=="c"):
+				stop()
+				print("stopped")
+				key = readchar.readkey()
+			else:
+				stop()
+				break
 else:
-    stop()
+	stop()
