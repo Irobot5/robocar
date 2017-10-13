@@ -42,8 +42,8 @@ def handler(signum, frame):  # stop when ctrl-c is recieved
 signal.signal(signal.SIGINT, handler)
 
 # variables
-rightmotor = GPIO.PWM(PWMA, 50)
-leftmotor = GPIO.PWM(PWMB, 50)
+leftmotor = GPIO.PWM(PWMA, 50)
+rightmotor = GPIO.PWM(PWMB, 50)
 
 class Fuckmylife(object):
 	@cherrypy.expose
