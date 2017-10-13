@@ -118,5 +118,33 @@ class Fuckmylife(object):
 rightmotor.start(0)
 leftmotor.start(0)
 
-cherrypy.server.socket_host = "0.0.0.0"  #0.0.0.0 =>  listen on all interfaces
-cherrypy.quickstart(Fuckmylife())
+
+goornot = "y"
+if goornot == "y":
+		key = readchar.readkey()
+		while True:
+			if (key=="w"):
+				forward()
+				print("forward")
+				key = readchar.readkey()
+			elif (key=="s"):
+				backward()
+				print("backward")
+				key = readchar.readkey()
+			elif(key=="a"):
+				left()
+				print("left")
+				key = readchar.readkey()
+			elif (key=="d"):
+				right()
+				print("right")
+				key = readchar.readkey()
+			elif (key=="c"):
+				stop()
+				print("stopped")
+				key = readchar.readkey()
+			else:
+				stop()
+				break
+else:
+	stop()
