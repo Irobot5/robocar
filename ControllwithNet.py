@@ -11,6 +11,7 @@ file.close()
 AIN1 = 2
 AIN2 = 3
 PWMA = 17
+
 BIN1 = 22
 BIN2 = 18
 PWMB = 27
