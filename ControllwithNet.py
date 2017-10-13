@@ -119,7 +119,7 @@ class Fuckmylife(object):
 rightmotor.start(0)
 leftmotor.start(0)
 
-#goornot = raw_input("would you like to start? y/n:")
+
 goornot = "y"
 if goornot == "y":
 		key = readchar.readkey()
