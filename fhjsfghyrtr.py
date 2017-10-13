@@ -5,7 +5,7 @@ file = open('/home/pi/htmlfile.html')
 index_html = file.read()
 file.close()
 
-class LEDController(object):
+class Fuckmylife(object):
     @cherrypy.expose
     def index(self):
         return index_html
