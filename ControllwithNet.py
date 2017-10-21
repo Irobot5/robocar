@@ -59,7 +59,7 @@ class Fuckmylife(object):
 		GPIO.output(BIN1, GPIO.LOW)
 		GPIO.output(BIN2, GPIO.HIGH)
 		GPIO.output(PWMB, GPIO.HIGH)
-		rightmotor.ChangeDutyCycle(100)
+		rightmotor.ChangeDutyCycle(100)#trouble running both motors at exact same speed.
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
 
