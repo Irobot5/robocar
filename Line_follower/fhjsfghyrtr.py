@@ -100,14 +100,9 @@ def leftward():
 
 
 def stop():
-    GPIO.output(AIN1, GPIO.LOW)
-    GPIO.output(AIN2, GPIO.HIGH)
     GPIO.output(PWMA, GPIO.LOW)#stopping the car is simply done by turning off the PWM for both motors
-    GPIO.output(BIN1, GPIO.LOW)
-    GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.LOW)
-    rightmotor.ChangeDutyCycle(0)#speed is not necessary here
-    leftmotor.ChangeDutyCycle(0)
+    #speed is not necessary here
 
 def leftabit():
     GPIO.output(AIN1, GPIO.LOW)#the same as forward
@@ -131,10 +126,10 @@ def rightabit():
 #we used to different ways to define a turn, a full turn and a small turn one only using one motor and one using both motors
 
 def shouldgocheck(A, B, C): #defining the input and direction
-    if A==1 and B==1 and C==1:
-        shouldgo="forward" #when given input 111 go forward
+    if A==1 and B==1 and C==1: #when given and input fromt the sensor it will create or change a variable with the word for the corrosponding given number.
+        shouldgo="forward" #so when given input 111 the car should go forward
     elif A==1 and B==0 and C==0:
-        shouldgo="left" #100 for left
+        shouldgo="left" #and when given 100 it should go left
     elif A==0 and B==1 and C==0:
         shouldgo="forward" #if then recieving only 1 its should still go forward sinc eits still on path
     elif A==0 and B==0 and C==1:
@@ -148,14 +143,14 @@ def shouldgocheck(A, B, C): #defining the input and direction
     elif A==0 and B==0 and C==0:
         shouldgo="back"
     else:
-        print("cannot find the direction and the last one is: " ,shouldgo)
-    return shouldgo
+        print("cannot find the direction and the last one is: " ,shouldgo)#if nothing is given it should display the text and run again, so it wont quit the program because of a fault.
+    return shouldgo#returning the result of the defintion to the program
 
 def realdirection(shouldgo):
     if shouldgo=="forward":
-        forward()
+        forward() #when forward is given the definition forward is used
     elif shouldgo=="left":
-        leftward()
+        leftward()#when left is given the definition leftward is used
     elif shouldgo=="right":
         rightward()
     elif shouldgo=="leftabit":
@@ -165,14 +160,13 @@ def realdirection(shouldgo):
     elif shouldgo=="back":
         backward()
     else:
-        print("shouldgo has an invaild value")
+        print("shouldgo has an invaild value")#a message to show something went wrong
 
 #run
 
-rightmotor.start(0)
+rightmotor.start(0)#giving the motor a start input after setup
 leftmotor.start(0)
 
-shouldgo="w"
 while True:
     A = GPIO.input(IRsensor2)
     B = GPIO.input(IRsensor1)
