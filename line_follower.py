@@ -151,17 +151,17 @@ def shouldgocheck(A, B, C):
         #print("cannot find the direction and the last one is: " ,shouldgo)
     return shouldgo
 
-#def realdirection(shouldgo):
-    #if shouldgo=="forward":
-      #  forward()
-  #  elif shouldgo=="left":
-        #leftabit()
-   # elif shouldgo=="right":
-       # rightabit()
-  #  elif shouldgo=="stop":
-        #stop()
-   # else:
-        #print("shouldgo has an invaild value")
+def realdirection(shouldgo):
+    if shouldgo=="forward":
+        forward()
+    elif shouldgo=="left":
+        leftabit()
+    elif shouldgo=="right":
+        rightabit()
+    elif shouldgo=="stop":
+        stop()
+    else:
+        print("shouldgo has an invaild value")
 
 #run
 
@@ -173,7 +173,7 @@ while True:
     A = GPIO.input(IRsensor2)
     B = GPIO.input(IRsensor1)
     C = GPIO.input(IRsensor3)
-    #realdirection(shouldgocheck(A, B, C))
+    realdirection(shouldgocheck(A, B, C))
     signal.signal(signal.SIGINT, handler)
     print(A, B, C)
     time.sleep(0.01)
