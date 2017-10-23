@@ -154,9 +154,9 @@ def realdirection(shouldgo):
     if shouldgo=="forward":
         forward()
     elif shouldgo=="left":
-        left()
+        leftward()
     elif shouldgo=="right":
-        right()
+        rightward()
     elif shouldgo=="stop":
         stop()
     else:
