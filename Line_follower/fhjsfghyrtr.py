@@ -145,7 +145,7 @@ def shouldgocheck(A, B, C):
     elif A==0 and B==1 and C==1:
         shouldgo="right"
     elif A==0 and B==0 and C==0:
-        shouldgo="stop"
+        shouldgo="back"
     else:
         print("cannot find the direction and the last one is: " ,shouldgo)
     return shouldgo
@@ -157,8 +157,8 @@ def realdirection(shouldgo):
         leftward()
     elif shouldgo=="right":
         rightward()
-    elif shouldgo=="stop":
-        stop()
+    elif shouldgo=="back":
+        backward()
     else:
         print("shouldgo has an invaild value")
 
