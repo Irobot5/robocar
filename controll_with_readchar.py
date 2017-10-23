@@ -121,6 +121,10 @@ if goornot == "y":
                 rightward()
                 print("right")
                 key = readchar.readkey()
+            elif (key=="c"):
+                stop()
+                print("stop")
+                key = readchar.readkey()
             else:
                 stop()
                 break
