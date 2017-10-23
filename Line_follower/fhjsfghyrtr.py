@@ -62,8 +62,8 @@ def forward():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(20)
-    leftmotor.ChangeDutyCycle(20)
+    rightmotor.ChangeDutyCycle(40)
+    leftmotor.ChangeDutyCycle(40)
 
 
 def backward():
@@ -84,8 +84,8 @@ def rightward():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.LOW)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(40)
-    leftmotor.ChangeDutyCycle(40)
+    rightmotor.ChangeDutyCycle(30)
+    leftmotor.ChangeDutyCycle(30)
 
 
 def leftward():
@@ -95,8 +95,8 @@ def leftward():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(40)
-    leftmotor.ChangeDutyCycle(40)
+    rightmotor.ChangeDutyCycle(30)
+    leftmotor.ChangeDutyCycle(30)
 
 
 def stop():
