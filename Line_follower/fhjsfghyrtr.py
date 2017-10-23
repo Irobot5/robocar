@@ -13,16 +13,16 @@ import signal, os
 import RPi.GPIO as GPIO
 import time
 
+#assigning H-bridge pins to GPIO
+AIN1 = 2 #leftmotor negative
+AIN2 = 3 #leftmotor positive
+PWMA = 17 #leftmotor on/off
+BIN1 = 22 #rightmotor negative
+BIN2 = 18 #rightmotor positive
+PWMB = 27 #rightmotor on/off
 
-AIN1 = 2
-AIN2 = 3
-PWMA = 17
-BIN1 = 22
-BIN2 = 18
-PWMB = 27
 
-
-# Pin Definitons:
+#line reader sensor Pin Definitons:
 IRsensor1 = 5       #mid
 IRsensor2 = 4     #left
 IRsensor3 = 6     #right
@@ -32,64 +32,64 @@ GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
 GPIO.setup(IRsensor1, GPIO.IN) # sensor set as input
 GPIO.setup(IRsensor2, GPIO.IN)
 GPIO.setup(IRsensor3, GPIO.IN)
-GPIO.setwarnings(False)
-GPIO.setup(AIN1, GPIO.OUT)
+GPIO.setwarnings(False)#disabling warnings for constant running
+GPIO.setup(AIN1, GPIO.OUT)#assigning H-bridge pins to output
 GPIO.setup(AIN2, GPIO.OUT)
 GPIO.setup(PWMA, GPIO.OUT)
 GPIO.setup(BIN1, GPIO.OUT)
 GPIO.setup(BIN2, GPIO.OUT)
 GPIO.setup(PWMB, GPIO.OUT)
 
-# variables
-leftmotor = GPIO.PWM(PWMA, 50)
+#assinging motor variables
+leftmotor = GPIO.PWM(PWMA, 50) #frequency and what the motor pin is
 rightmotor = GPIO.PWM(PWMB, 50)
 
-def handler(signum, frame):  #stop when ctrl-c is recieved
+def handler(signum, frame):  #stop when ctrl-c is recieved or else you die
     print 'Signal handler called with signal', signum
     print 'exiting'
-    GPIO.output(PWMA, GPIO.LOW)
+    GPIO.output(PWMA, GPIO.LOW)#turning off the motor or else the car would be left on and keep driving after exit
     GPIO.output(PWMB, GPIO.LOW)
-    GPIO.cleanup()
-    exit(0)
+    GPIO.cleanup()#simple cleanup setting all pins back to original state(input)
+    exit(0)#exits the program
 
 # When recieving ctrl-C
-signal.signal(signal.SIGINT, handler)
-
+signal.signal(signal.SIGINT, handler)#calls the command plus adding it into the loop so not to crash
+#defining every direction
 def forward():
-    GPIO.output(AIN1, GPIO.LOW)
+    GPIO.output(AIN1, GPIO.LOW)#low on AIN/BIN 1 and high on 2 to go forward and opposite to go backwards
     GPIO.output(AIN2, GPIO.HIGH)
-    GPIO.output(PWMA, GPIO.HIGH)
+    GPIO.output(PWMA, GPIO.HIGH)#PWM set to high for start if LOW it will not run
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(30)
+    rightmotor.ChangeDutyCycle(30)#setting the speed of the car at 30% of 5volt.
     leftmotor.ChangeDutyCycle(30)
 
 
 def backward():
-    GPIO.output(AIN1, GPIO.HIGH)
+    GPIO.output(AIN1, GPIO.HIGH)#when going backwards the settings will be the opposite of the forward def
     GPIO.output(AIN2, GPIO.LOW)
-    GPIO.output(PWMA, GPIO.HIGH)
+    GPIO.output(PWMA, GPIO.HIGH)#the PWM is only there to keep the motor on and off, so we will still have it as high for on
     GPIO.output(BIN1, GPIO.HIGH)
     GPIO.output(BIN2, GPIO.LOW)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(20)
+    rightmotor.ChangeDutyCycle(20)#still speed
     leftmotor.ChangeDutyCycle(20)
 
 
 def rightward():
-    GPIO.output(AIN1, GPIO.LOW)
-    GPIO.output(AIN2, GPIO.HIGH)
+    GPIO.output(AIN1, GPIO.LOW)#when turning the princible is changed
+    GPIO.output(AIN2, GPIO.HIGH)#the AIN will have to go forward
     GPIO.output(PWMA, GPIO.HIGH)
     GPIO.output(BIN1, GPIO.LOW)
-    GPIO.output(BIN2, GPIO.LOW)
+    GPIO.output(BIN2, GPIO.LOW)#the BIN will be off for a hard right turn
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(30)
+    rightmotor.ChangeDutyCycle(30)#still speed
     leftmotor.ChangeDutyCycle(30)
 
 
 def leftward():
-    GPIO.output(AIN1, GPIO.LOW)
+    GPIO.output(AIN1, GPIO.LOW)#the opposite again is used for left
     GPIO.output(AIN2, GPIO.LOW)
     GPIO.output(PWMA, GPIO.HIGH)
     GPIO.output(BIN1, GPIO.LOW)
@@ -102,32 +102,33 @@ def leftward():
 def stop():
     GPIO.output(AIN1, GPIO.LOW)
     GPIO.output(AIN2, GPIO.HIGH)
-    GPIO.output(PWMA, GPIO.LOW)
+    GPIO.output(PWMA, GPIO.LOW)#stopping the car is simply done by turning off the PWM for both motors
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.LOW)
-    rightmotor.ChangeDutyCycle(0)
+    rightmotor.ChangeDutyCycle(0)#speed is not necessary here
     leftmotor.ChangeDutyCycle(0)
 
 def leftabit():
-    GPIO.output(AIN1, GPIO.LOW)
+    GPIO.output(AIN1, GPIO.LOW)#the same as forward
     GPIO.output(AIN2, GPIO.HIGH)
     GPIO.output(PWMA, GPIO.HIGH)
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(20)
-    leftmotor.ChangeDutyCycle(5)
+    rightmotor.ChangeDutyCycle(20)#speed is different for a smaller adjustment in direction
+    leftmotor.ChangeDutyCycle(5)#a lower speed
 
 def rightabit():
-    GPIO.output(AIN1, GPIO.LOW)
+    GPIO.output(AIN1, GPIO.LOW)#same as leftabit
     GPIO.output(AIN2, GPIO.HIGH)
     GPIO.output(PWMA, GPIO.HIGH)
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(5)
+    rightmotor.ChangeDutyCycle(5)#but with the speed opposite for the motors
     leftmotor.ChangeDutyCycle(20)
+#we used to different ways to define a turn, a full turn and a small turn one only using one motor and one using both motors
 
 def shouldgocheck(A, B, C): #defining the input and direction
     if A==1 and B==1 and C==1:
