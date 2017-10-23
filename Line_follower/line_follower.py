@@ -78,22 +78,22 @@ def backward():
 
 
 def rightward():
-    GPIO.output(AIN1, GPIO.HIGH)
-    GPIO.output(AIN2, GPIO.LOW)
+    GPIO.output(AIN1, GPIO.LOW)
+    GPIO.output(AIN2, GPIO.HIGH)
     GPIO.output(PWMA, GPIO.HIGH)
-    GPIO.output(BIN1, GPIO.LOW)
-    GPIO.output(BIN2, GPIO.HIGH)
+    GPIO.output(BIN1, GPIO.HIGH)
+    GPIO.output(BIN2, GPIO.LOW)
     GPIO.output(PWMB, GPIO.HIGH)
     rightmotor.ChangeDutyCycle(30)
     leftmotor.ChangeDutyCycle(30)
 
 
 def leftward():
-    GPIO.output(AIN1, GPIO.LOW)
-    GPIO.output(AIN2, GPIO.HIGH)
+    GPIO.output(AIN1, GPIO.HIGH)
+    GPIO.output(AIN2, GPIO.LOW)
     GPIO.output(PWMA, GPIO.HIGH)
-    GPIO.output(BIN1, GPIO.HIGH)
-    GPIO.output(BIN2, GPIO.LOW)
+    GPIO.output(BIN1, GPIO.LOW)
+    GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
     rightmotor.ChangeDutyCycle(30)
     leftmotor.ChangeDutyCycle(30)
@@ -110,19 +110,19 @@ def stop():
     leftmotor.ChangeDutyCycle(0)
 
 def leftabit():
-    GPIO.output(AIN1, GPIO.LOW)
-    GPIO.output(AIN2, GPIO.HIGH)
+    GPIO.output(AIN1, GPIO.HIGH)
+    GPIO.output(AIN2, GPIO.LOW)
     GPIO.output(PWMA, GPIO.HIGH)
-    GPIO.output(BIN1, GPIO.LOW)
-    GPIO.output(BIN2, GPIO.HIGH)
-    GPIO.output(PWMB, GPIO.LOW)
+    GPIO.output(BIN1, GPIO.HIGH)
+    GPIO.output(BIN2, GPIO.LOW)
+    GPIO.output(PWMB, GPIO.HIGH)
     rightmotor.ChangeDutyCycle(20)
     leftmotor.ChangeDutyCycle(0)
 
 def rightabit():
     GPIO.output(AIN1, GPIO.LOW)
     GPIO.output(AIN2, GPIO.HIGH)
-    GPIO.output(PWMA, GPIO.LOW)
+    GPIO.output(PWMA, GPIO.HIGH)
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
@@ -147,7 +147,8 @@ def shouldgocheck(A, B, C):
     elif A==0 and B==0 and C==0:
         shouldgo="stop"
     else:
-        print("cannot find the direction and the last one is: " ,shouldgo)
+        shouldgo="backward"
+        #print("cannot find the direction and the last one is: " ,shouldgo)
     return shouldgo
 
 def realdirection(shouldgo):
