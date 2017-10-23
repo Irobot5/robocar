@@ -7,7 +7,7 @@
 
 #1 1 0  turn left (on the corner, with 90 degrees)
 #1 0 1  ???
-#0 1 1  turn right (ont the corner, with 90 degrees)
+#0 1 1  turn right (ont the corner, with 90 degrees).
 
 import signal, os
 import RPi.GPIO as GPIO
