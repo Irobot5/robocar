@@ -117,7 +117,7 @@ def leftabit():
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
     rightmotor.ChangeDutyCycle(20)
-    leftmotor.ChangeDutyCycle(0)
+    leftmotor.ChangeDutyCycle(5)
 
 def rightabit():
     GPIO.output(AIN1, GPIO.LOW)
@@ -126,7 +126,7 @@ def rightabit():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(0)
+    rightmotor.ChangeDutyCycle(5)
     leftmotor.ChangeDutyCycle(20)
 
 def shouldgocheck(A, B, C): #defining the input and direction
