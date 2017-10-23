@@ -62,8 +62,8 @@ def forward():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(50)
-    leftmotor.ChangeDutyCycle(50)
+    rightmotor.ChangeDutyCycle(35)
+    leftmotor.ChangeDutyCycle(35)
 
 
 def backward():
@@ -110,11 +110,11 @@ def stop():
     leftmotor.ChangeDutyCycle(0)
 
 def leftabit():
-    GPIO.output(AIN1, GPIO.HIGH)
-    GPIO.output(AIN2, GPIO.LOW)
+    GPIO.output(AIN1, GPIO.LOW)
+    GPIO.output(AIN2, GPIO.HIGH)
     GPIO.output(PWMA, GPIO.HIGH)
-    GPIO.output(BIN1, GPIO.HIGH)
-    GPIO.output(BIN2, GPIO.LOW)
+    GPIO.output(BIN1, GPIO.LOW)
+    GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
     rightmotor.ChangeDutyCycle(20)
     leftmotor.ChangeDutyCycle(0)
@@ -129,21 +129,21 @@ def rightabit():
     rightmotor.ChangeDutyCycle(0)
     leftmotor.ChangeDutyCycle(20)
 
-def shouldgocheck(A, B, C):
+def shouldgocheck(A, B, C): #defining the input and direction
     if A==1 and B==1 and C==1:
-        shouldgo="forward"
+        shouldgo="forward" #when given input 111 go forward
     elif A==1 and B==0 and C==0:
-        shouldgo="left"
+        shouldgo="left" #100 for left
     elif A==0 and B==1 and C==0:
-        shouldgo="forward"
+        shouldgo="forward" #if then recieving only 1 its should still go forward sinc eits still on path
     elif A==0 and B==0 and C==1:
         shouldgo="right"
     elif A==1 and B==1 and C==0:
-        shouldgo="left"
+        shouldgo="leftabit"
     elif A==1 and B==0 and C==1:
         shouldgo="forward"
     elif A==0 and B==1 and C==1:
-        shouldgo="right"
+        shouldgo="rightabit"
     elif A==0 and B==0 and C==0:
         shouldgo="back"
     else:
@@ -157,6 +157,10 @@ def realdirection(shouldgo):
         leftward()
     elif shouldgo=="right":
         rightward()
+    elif shouldgo=="leftabit":
+        leftabit()#when at close ot the edge go a tiny bit to the other side
+    elif shouldgo=="rightabit":
+        rightabit()
     elif shouldgo=="back":
         backward()
     else:
