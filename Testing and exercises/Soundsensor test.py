@@ -12,10 +12,10 @@ PWMB = 27 #rightmotor on/off
 
 
 #sound sensor Pin Definitons:
-triggerpina = #a is front sensor
-triggerpinb = #b is back sensor
-echopina =
-echopinb =
+triggerpina = 13#a is front sensor
+triggerpinb = 24 #b is back sensor
+echopina = 19
+echopinb = 23
 IRsensor1 = 5       #mid
 IRsensor2 = 4     #left
 IRsensor3 = 6     #right
@@ -157,6 +157,8 @@ def realdirection(shouldgo):
         time.sleep(1)
 	else:
         print("mrklmerk")
+
+
 while True:
     A = GPIO.input(IRsensor2)
     B = GPIO.input(IRsensor1)
@@ -165,3 +167,7 @@ while True:
     signal.signal(signal.SIGINT, handler)
     print(A, B, C)
     time.sleep(0.01)
+    realdistence = reading()
+    if realdistence < 1500:
+        forward()
+        time.sleep(0.01)
