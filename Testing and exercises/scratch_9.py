@@ -12,7 +12,7 @@ class Fuckmylife(object):
 
     @cherrypy.expose
     def linefollower():
-        # 1 1 1  forward (in the crossroads)
+        # 1 1 1  forward (in the crossroads)c
         # 0 0 0  turn around to find a line
 
         # 1 0 0  turn left (back to line)
