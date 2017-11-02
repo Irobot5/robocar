@@ -17,7 +17,7 @@ def linefollower():
     # 0 1 1  turn right (ont the corner, with 90 degrees)
 
 
-    # assigning H-bridge pins to GPIO
+    # assigning H-bridge pins to GPIOc
     AIN1 = 2  # leftmotor negative
     AIN2 = 3  # leftmotor positive
     PWMA = 17  # leftmotor on/off
