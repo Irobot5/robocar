@@ -257,7 +257,6 @@ class Fuckmylife(object):
 			elif stopprogram():
 				print("break")
 				break
-				return WASDrightplace
 			else:
 				leftward()
 			time.sleep(0.01)
