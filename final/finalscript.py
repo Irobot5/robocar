@@ -8,15 +8,15 @@ file = open('finalhtml.html')
 WASDrightplace = file.read()
 file.close()
 
-AIN1 = 2 #leftmotor negative
-AIN2 = 3 #leftmotor positive
-PWMA = 17 #leftmotor on/off
-BIN1 = 22 #rightmotor negative
-BIN2 = 18 #rightmotor positive
-PWMB = 27 #rightmotor on/off
+AIN1 = 2  #leftmotor negative
+AIN2 = 3  #leftmotor positive
+PWMA = 17  #leftmotor on/off
+BIN1 = 22  #rightmotor negative
+BIN2 = 18  #rightmotor positive
+PWMB = 27  #rightmotor on/off
 #sound sensor Pin Definitons:
-triggerpina = 13#a is front sensor
-triggerpinb = 24 #b is back sensor
+triggerpina = 13  #a is front sensor
+triggerpinb = 24  #b is back sensor
 echopina = 19
 echopinb = 23
 IRsensor1 = 5       #mid
@@ -24,7 +24,7 @@ IRsensor2 = 4     #left
 IRsensor3 = 6     #right
 
 # Pin Setup:
-GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
+GPIO.setmode(GPIO.BCM)   # Broadcom pin-numbering scheme
 GPIO.setup(triggerpina,GPIO.OUT)
 GPIO.setup(triggerpinb,GPIO.OUT)
 GPIO.setup(echopina,GPIO.IN)
@@ -32,8 +32,8 @@ GPIO.setup(echopinb,GPIO.IN)
 GPIO.setup(IRsensor1, GPIO.IN) # sensor set as input
 GPIO.setup(IRsensor2, GPIO.IN)
 GPIO.setup(IRsensor3, GPIO.IN)
-GPIO.setwarnings(False)#disabling warnings for constant running
-GPIO.setup(AIN1, GPIO.OUT)#assigning H-bridge pins to output
+GPIO.setwarnings(False)  #disabling warnings for constant running
+GPIO.setup(AIN1, GPIO.OUT)  #assigning H-bridge pins to output
 GPIO.setup(AIN2, GPIO.OUT)
 GPIO.setup(PWMA, GPIO.OUT)
 GPIO.setup(BIN1, GPIO.OUT)
@@ -197,26 +197,6 @@ class Fuckmylife(object):
 			rightmotor.ChangeDutyCycle(80)  # setting the speed of the car at 30% of 5volt.
 			leftmotor.ChangeDutyCycle(80)
 
-		def backward():
-			GPIO.output(AIN1, GPIO.HIGH)  # when going backwards the settings will be the opposite of the forward def
-			GPIO.output(AIN2, GPIO.LOW)
-			GPIO.output(PWMA, GPIO.HIGH)  # the PWM is only there to keep the motor on and off, so we will still have it as high for on
-			GPIO.output(BIN1, GPIO.HIGH)
-			GPIO.output(BIN2, GPIO.LOW)
-			GPIO.output(PWMB, GPIO.HIGH)
-			rightmotor.ChangeDutyCycle(20)  # still speed
-			leftmotor.ChangeDutyCycle(20)
-
-		def rightward():
-			GPIO.output(AIN1, GPIO.LOW)  # when turning the princible is changed
-			GPIO.output(AIN2, GPIO.HIGH)  # the AIN will have to go forward
-			GPIO.output(PWMA, GPIO.HIGH)
-			GPIO.output(BIN1, GPIO.HIGH)
-			GPIO.output(BIN2, GPIO.LOW)  # the BIN will be off for a hard right turn
-			GPIO.output(PWMB, GPIO.HIGH)
-			rightmotor.ChangeDutyCycle(10)  # still speed
-			leftmotor.ChangeDutyCycle(10)
-
 		def leftward():
 			GPIO.output(AIN1, GPIO.HIGH)  # the opposite again is used for left
 			GPIO.output(AIN2, GPIO.LOW)
@@ -227,31 +207,17 @@ class Fuckmylife(object):
 			rightmotor.ChangeDutyCycle(15)
 			leftmotor.ChangeDutyCycle(15)
 
-		def stop():
-			GPIO.output(PWMA, GPIO.LOW)  # stopping the car is simply done by turning off the PWM for both motors
+		def stopprogram():
+			GPIO.output(AIN1, GPIO.LOW)  # the opposite again is used for left
+			GPIO.output(AIN2, GPIO.LOW)
+			GPIO.output(PWMA, GPIO.LOW)
+			GPIO.output(BIN1, GPIO.LOW)
+			GPIO.output(BIN2, GPIO.LOW)
 			GPIO.output(PWMB, GPIO.LOW)
+			rightmotor.ChangeDutyCycle(0)
+			leftmotor.ChangeDutyCycle(0)
 
-		# speed is not necessary here
 
-		def leftabit():
-			GPIO.output(AIN1, GPIO.LOW)  # the same as forward
-			GPIO.output(AIN2, GPIO.HIGH)
-			GPIO.output(PWMA, GPIO.HIGH)
-			GPIO.output(BIN1, GPIO.LOW)
-			GPIO.output(BIN2, GPIO.HIGH)
-			GPIO.output(PWMB, GPIO.HIGH)
-			rightmotor.ChangeDutyCycle(20)  # speed is different for a smaller adjustment in direction
-			leftmotor.ChangeDutyCycle(5)  # a lower speed
-
-		def rightabit():
-			GPIO.output(AIN1, GPIO.LOW)  # same as leftabit
-			GPIO.output(AIN2, GPIO.HIGH)
-			GPIO.output(PWMA, GPIO.HIGH)
-			GPIO.output(BIN1, GPIO.LOW)
-			GPIO.output(BIN2, GPIO.HIGH)
-			GPIO.output(PWMB, GPIO.HIGH)
-			rightmotor.ChangeDutyCycle(5)  # but with the speed opposite for the motors
-			leftmotor.ChangeDutyCycle(20)
 
 		# we used to different ways to define a turn, a full turn and a small turn one only using one motor and one using both motors
 
@@ -298,6 +264,7 @@ class Fuckmylife(object):
 			if realdistence < 100:
 				forward()
 			elif stopprogram():
+				print("break")
 				break
 			else:
 				leftward()
@@ -393,8 +360,7 @@ class Fuckmylife(object):
 			elif A == 0 and B == 0 and C == 0:
 				shouldgo = "back"
 			else:
-				print("cannot find the direction and the last one is: ",
-				      shouldgo)  # if nothing is given it should display the text and run again, so it wont quit the program because of a fault.
+				print("cannot find the direction and the last one is: ", shouldgo)  # if nothing is given it should display the text and run again, so it wont quit the program because of a fault.
 			return shouldgo  # returning the result of the defintion to the program
 
 		def realdirection(shouldgo):
