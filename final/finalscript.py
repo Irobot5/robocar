@@ -182,6 +182,7 @@ class Fuckmylife(object):
 		GPIO.output(PWMB, GPIO.LOW)
 		rightmotor.ChangeDutyCycle(0)
 		leftmotor.ChangeDutyCycle(0)
+		return WASDrightplace
 
 
 
@@ -206,16 +207,6 @@ class Fuckmylife(object):
 			GPIO.output(PWMB, GPIO.HIGH)
 			rightmotor.ChangeDutyCycle(15)
 			leftmotor.ChangeDutyCycle(15)
-
-		def stopprogram():
-			GPIO.output(AIN1, GPIO.LOW)  # the opposite again is used for left
-			GPIO.output(AIN2, GPIO.LOW)
-			GPIO.output(PWMA, GPIO.LOW)
-			GPIO.output(BIN1, GPIO.LOW)
-			GPIO.output(BIN2, GPIO.LOW)
-			GPIO.output(PWMB, GPIO.LOW)
-			rightmotor.ChangeDutyCycle(0)
-			leftmotor.ChangeDutyCycle(0)
 
 
 
@@ -266,6 +257,7 @@ class Fuckmylife(object):
 			elif stopprogram():
 				print("break")
 				break
+				return WASDrightplace
 			else:
 				leftward()
 			time.sleep(0.01)
