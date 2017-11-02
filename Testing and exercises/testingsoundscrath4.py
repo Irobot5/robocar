@@ -59,8 +59,8 @@ def forward():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(30)#setting the speed of the car at 30% of 5volt.
-    leftmotor.ChangeDutyCycle(30)
+    rightmotor.ChangeDutyCycle(80)#setting the speed of the car at 30% of 5volt.
+    leftmotor.ChangeDutyCycle(80)
 
 
 def backward():
@@ -92,8 +92,8 @@ def leftward():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
-    rightmotor.ChangeDutyCycle(10)
-    leftmotor.ChangeDutyCycle(10)
+    rightmotor.ChangeDutyCycle(15)
+    leftmotor.ChangeDutyCycle(15)
 
 
 def stop():
@@ -147,7 +147,7 @@ def reading(sensor):
 the should not driver over any black lines"""
 
 def incaseofline(A, B, C):
-    if A==1 and B==1 and C==1:
+    if A==1 or B==1 or C==1:
         leftward()
 
 rightmotor.start(0)
@@ -166,4 +166,5 @@ while True:
         forward()
     else:
         leftward()
+    incaseofline()
     time.sleep(0.01)
