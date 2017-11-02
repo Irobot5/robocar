@@ -292,7 +292,7 @@ class Fuckmylife(object):
 			if shouldgo == "backward":
 				backward()
 				time.sleep(1)
-				else:
+			else:
 				print("mrklmerk")
 
 		while True:
