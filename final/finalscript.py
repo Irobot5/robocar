@@ -182,7 +182,7 @@ class Fuckmylife(object):
 		GPIO.output(PWMB, GPIO.LOW)
 		rightmotor.ChangeDutyCycle(0)
 		leftmotor.ChangeDutyCycle(0)
-		return WASDrightplace
+		break
 
 
 	@cherrypy.expose
