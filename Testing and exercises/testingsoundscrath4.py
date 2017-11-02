@@ -150,6 +150,9 @@ def incaseofline(A, B, C):
     if A==1 and B==1 and C==1:
         leftward()
 
+rightmotor.start(0)
+leftmotor.start(0)
+
 while True:
     A = GPIO.input(IRsensor2)
     B = GPIO.input(IRsensor1)
