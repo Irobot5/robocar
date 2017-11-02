@@ -208,6 +208,16 @@ class Fuckmylife(object):
 			rightmotor.ChangeDutyCycle(15)
 			leftmotor.ChangeDutyCycle(15)
 
+		def stopprogram(self):
+			GPIO.output(AIN1, GPIO.LOW)  # the opposite again is used for left
+			GPIO.output(AIN2, GPIO.LOW)
+			GPIO.output(PWMA, GPIO.LOW)
+			GPIO.output(BIN1, GPIO.LOW)
+			GPIO.output(BIN2, GPIO.LOW)
+			GPIO.output(PWMB, GPIO.LOW)
+			rightmotor.ChangeDutyCycle(0)
+			leftmotor.ChangeDutyCycle(0)
+			return WASDrightplace
 
 
 		# we used to different ways to define a turn, a full turn and a small turn one only using one motor and one using both motors
@@ -254,6 +264,8 @@ class Fuckmylife(object):
 			incaseofline(A, B, C)
 			if realdistence < 100:
 				forward()
+			elif stopprogram(self):
+				break
 			else:
 				leftward()
 			time.sleep(0.01)
@@ -328,6 +340,17 @@ class Fuckmylife(object):
 			rightmotor.ChangeDutyCycle(5)  # but with the speed opposite for the motors
 			leftmotor.ChangeDutyCycle(20)
 
+		def stopprogram(self):
+			GPIO.output(AIN1, GPIO.LOW)  # the opposite again is used for left
+			GPIO.output(AIN2, GPIO.LOW)
+			GPIO.output(PWMA, GPIO.LOW)
+			GPIO.output(BIN1, GPIO.LOW)
+			GPIO.output(BIN2, GPIO.LOW)
+			GPIO.output(PWMB, GPIO.LOW)
+			rightmotor.ChangeDutyCycle(0)
+			leftmotor.ChangeDutyCycle(0)
+			return WASDrightplace
+
 		# we used to different ways to define a turn, a full turn and a small turn one only using one motor and one using both motors
 
 		def shouldgocheck(A, B, C):  # defining the input and direction
@@ -379,6 +402,8 @@ class Fuckmylife(object):
 			realdirection(shouldgocheck(A, B, C))
 			print(A, B, C)
 			time.sleep(0.01)
+			if stopprogram(self):
+				break
 # program
 
 rightmotor.start(0)
