@@ -254,9 +254,6 @@ class Fuckmylife(object):
 			incaseofline(A, B, C)
 			if realdistence < 100:
 				forward()
-			elif stopprogram():
-				print("break")
-				break
 			else:
 				leftward()
 			time.sleep(0.01)
@@ -382,11 +379,6 @@ class Fuckmylife(object):
 			realdirection(shouldgocheck(A, B, C))
 			print(A, B, C)
 			time.sleep(0.01)
-			if stopprogram():
-				break
-
-
-
 # program
 
 rightmotor.start(0)
