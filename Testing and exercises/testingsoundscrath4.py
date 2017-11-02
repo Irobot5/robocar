@@ -158,13 +158,11 @@ while True:
     B = GPIO.input(IRsensor1)
     C = GPIO.input(IRsensor3)
     realdistence = reading(0)
-    signal.signal(signal.SIGINT, handler)
     print(realdistence)
     print(A, B, C)
-    incaseofline()
+    incaseofline(A, B, C)
     if realdistence < 100:
         forward()
     else:
         leftward()
-    incaseofline()
     time.sleep(0.01)

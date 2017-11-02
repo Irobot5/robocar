@@ -194,8 +194,8 @@ class Fuckmylife(object):
 			GPIO.output(BIN1, GPIO.LOW)
 			GPIO.output(BIN2, GPIO.HIGH)
 			GPIO.output(PWMB, GPIO.HIGH)
-			rightmotor.ChangeDutyCycle(30)  # setting the speed of the car at 30% of 5volt.
-			leftmotor.ChangeDutyCycle(30)
+			rightmotor.ChangeDutyCycle(80)  # setting the speed of the car at 30% of 5volt.
+			leftmotor.ChangeDutyCycle(80)
 
 		def backward():
 			GPIO.output(AIN1, GPIO.HIGH)  # when going backwards the settings will be the opposite of the forward def
@@ -212,21 +212,21 @@ class Fuckmylife(object):
 			GPIO.output(AIN1, GPIO.LOW)  # when turning the princible is changed
 			GPIO.output(AIN2, GPIO.HIGH)  # the AIN will have to go forward
 			GPIO.output(PWMA, GPIO.HIGH)
-			GPIO.output(BIN1, GPIO.LOW)
+			GPIO.output(BIN1, GPIO.HIGH)
 			GPIO.output(BIN2, GPIO.LOW)  # the BIN will be off for a hard right turn
 			GPIO.output(PWMB, GPIO.HIGH)
-			rightmotor.ChangeDutyCycle(30)  # still speed
-			leftmotor.ChangeDutyCycle(30)
+			rightmotor.ChangeDutyCycle(10)  # still speed
+			leftmotor.ChangeDutyCycle(10)
 
 		def leftward():
-			GPIO.output(AIN1, GPIO.LOW)  # the opposite again is used for left
+			GPIO.output(AIN1, GPIO.HIGH)  # the opposite again is used for left
 			GPIO.output(AIN2, GPIO.LOW)
 			GPIO.output(PWMA, GPIO.HIGH)
 			GPIO.output(BIN1, GPIO.LOW)
 			GPIO.output(BIN2, GPIO.HIGH)
 			GPIO.output(PWMB, GPIO.HIGH)
-			rightmotor.ChangeDutyCycle(30)
-			leftmotor.ChangeDutyCycle(30)
+			rightmotor.ChangeDutyCycle(15)
+			leftmotor.ChangeDutyCycle(15)
 
 		def stop():
 			GPIO.output(PWMA, GPIO.LOW)  # stopping the car is simply done by turning off the PWM for both motors
@@ -281,33 +281,26 @@ class Fuckmylife(object):
 		"""if distance is closer than 150 cm then the car shuld mov forward
 		the should not driver over any black lines"""
 
-		def shouldgocheck(A, B, C):  # defining the input and direction
-			if A == 1 and B == 1 and C == 1:  # when given and input fromt the sensor it will create or change a variable with the word for the corrosponding given number.
-				shouldgo = "backward"
-			else:
-				print("im fine bra")
-			return shouldgo
+		def incaseofline(A, B, C):
+			if A == 1 or B == 1 or C == 1:
+				leftward()
 
-		def realdirection(shouldgo):
-			if shouldgo == "backward":
-				backward()
-				time.sleep(1)
-			else:
-				print("mrklmerk")
+		rightmotor.start(0)
+		leftmotor.start(0)
 
 		while True:
 			A = GPIO.input(IRsensor2)
 			B = GPIO.input(IRsensor1)
 			C = GPIO.input(IRsensor3)
-			realdirection(shouldgocheck(A, B, C))
-			signal.signal(signal.SIGINT, handler)
+			realdistence = reading(0)
+			print(realdistence)
 			print(A, B, C)
-			time.sleep(0.01)
-			realdistence = reading()
-			if realdistence < 1500:
+			incaseofline(A, B, C)
+			if realdistence < 100:
 				forward()
-				time.sleep(0.01)
-		return WASDrightplace
+			else:
+				leftward()
+			time.sleep(0.01)
 
 	@cherrypy.expose
 	def linefollow(self):
@@ -326,8 +319,7 @@ class Fuckmylife(object):
 		def backward():
 			GPIO.output(AIN1, GPIO.HIGH)  # when going backwards the settings will be the opposite of the forward def
 			GPIO.output(AIN2, GPIO.LOW)
-			GPIO.output(PWMA,
-			            GPIO.HIGH)  # the PWM is only there to keep the motor on and off, so we will still have it as high for on
+			GPIO.output(PWMA, GPIO.HIGH)  # the PWM is only there to keep the motor on and off, so we will still have it as high for on
 			GPIO.output(BIN1, GPIO.HIGH)
 			GPIO.output(BIN2, GPIO.LOW)
 			GPIO.output(PWMB, GPIO.HIGH)
@@ -433,7 +425,7 @@ class Fuckmylife(object):
 			signal.signal(signal.SIGINT, handler)
 			print(A, B, C)
 			time.sleep(0.01)
-		return WASDrightplace
+
 
 
 # program
