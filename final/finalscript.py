@@ -182,7 +182,7 @@ class Fuckmylife(object):
 		GPIO.output(PWMB, GPIO.LOW)
 		rightmotor.ChangeDutyCycle(0)
 		leftmotor.ChangeDutyCycle(0)
-		break
+
 
 
 	@cherrypy.expose
@@ -200,8 +200,7 @@ class Fuckmylife(object):
 		def backward():
 			GPIO.output(AIN1, GPIO.HIGH)  # when going backwards the settings will be the opposite of the forward def
 			GPIO.output(AIN2, GPIO.LOW)
-			GPIO.output(PWMA,
-			            GPIO.HIGH)  # the PWM is only there to keep the motor on and off, so we will still have it as high for on
+			GPIO.output(PWMA, GPIO.HIGH)  # the PWM is only there to keep the motor on and off, so we will still have it as high for on
 			GPIO.output(BIN1, GPIO.HIGH)
 			GPIO.output(BIN2, GPIO.LOW)
 			GPIO.output(PWMB, GPIO.HIGH)
@@ -298,6 +297,8 @@ class Fuckmylife(object):
 			incaseofline(A, B, C)
 			if realdistence < 100:
 				forward()
+			elif stopprogram():
+				break
 			else:
 				leftward()
 			time.sleep(0.01)
@@ -422,9 +423,10 @@ class Fuckmylife(object):
 			B = GPIO.input(IRsensor1)
 			C = GPIO.input(IRsensor3)
 			realdirection(shouldgocheck(A, B, C))
-			signal.signal(signal.SIGINT, handler)
 			print(A, B, C)
 			time.sleep(0.01)
+			if stopprogram():
+				break
 
 
 
