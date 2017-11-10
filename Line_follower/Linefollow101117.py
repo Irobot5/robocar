@@ -166,25 +166,25 @@ def realdirection(shouldgo):
         rightmotor.start(50)
         leftmotor.start(50)
         time.sleep(0.05)
-        GPIO.cleanup()
+
     elif shouldgo=="left":
         leftward()
         rightmotor.start(50)
         leftmotor.start(5)
         time.sleep(0.05)
-        GPIO.cleanup()
+
     elif shouldgo=="right":
         rightward()
         rightmotor.start(5)
         leftmotor.start(50)
         time.sleep(0.05)
-        GPIO.cleanup()
+
     elif shouldgo=="back":
         backward()
         rightmotor.start(40)
         leftmotor.start(40)
         time.sleep(0.05)
-        GPIO.cleanup()
+
     else:
         print("shouldgo has an invaild value")
 
