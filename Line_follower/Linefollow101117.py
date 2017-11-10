@@ -129,6 +129,16 @@ def rightabit():
 #    rightmotor.ChangeDutyCycle(0)
 #    leftmotor.ChangeDutyCycle(20)
 
+def cleanup():
+    GPIO.output(AIN1, GPIO.LOW)
+    GPIO.output(AIN2, GPIO.LOW)
+    GPIO.output(PWMA, GPIO.LOW)
+    GPIO.output(BIN1, GPIO.LOW)
+    GPIO.output(BIN2, GPIO.LOW)
+    GPIO.output(PWMB, GPIO.LOW)
+    rightmotor.start(0)
+    leftmotor.start(0)
+
 def shouldgocheck(A, B, C):
     if A==1 and B==1 and C==1:
         shouldgo="forward"
