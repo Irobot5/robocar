@@ -165,22 +165,18 @@ def realdirection(shouldgo):
         forward()
         rightmotor.start(57)
         leftmotor.start(57)
-        cleanup()
     elif shouldgo=="left":
         leftward()
         rightmotor.start(40)
         leftmotor.start(10)
-        cleanup()
     elif shouldgo=="right":
         rightward()
         rightmotor.start(10)
         leftmotor.start(40)
-        cleanup()
     elif shouldgo=="back":
         backward()
         rightmotor.start(57)
         leftmotor.start(57)
-        cleanup()
     else:
         print("shouldgo has an invaild value")
 
