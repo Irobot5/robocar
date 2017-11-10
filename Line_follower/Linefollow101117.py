@@ -81,16 +81,16 @@ def rightward():
     GPIO.output(AIN1, GPIO.LOW)
     GPIO.output(AIN2, GPIO.HIGH)
     GPIO.output(PWMA, GPIO.HIGH)
-    GPIO.output(BIN1, GPIO.HIGH)
-    GPIO.output(BIN2, GPIO.LOW)
+    GPIO.output(BIN1, GPIO.LOW)
+    GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.HIGH)
 #    rightmotor.ChangeDutyCycle(30)
 #    leftmotor.ChangeDutyCycle(30)
 
 
 def leftward():
-    GPIO.output(AIN1, GPIO.HIGH)
-    GPIO.output(AIN2, GPIO.LOW)
+    GPIO.output(AIN1, GPIO.LOW)
+    GPIO.output(AIN2, GPIO.HIGH)
     GPIO.output(PWMA, GPIO.HIGH)
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
@@ -167,12 +167,12 @@ def realdirection(shouldgo):
         leftmotor.start(57)
     elif shouldgo=="left":
         leftward()
-        rightmotor.start(40)
-        leftmotor.start(10)
+        rightmotor.start(30)
+        leftmotor.start(15)
     elif shouldgo=="right":
         rightward()
-        rightmotor.start(10)
-        leftmotor.start(40)
+        rightmotor.start(15)
+        leftmotor.start(30)
     elif shouldgo=="back":
         backward()
         rightmotor.start(57)
