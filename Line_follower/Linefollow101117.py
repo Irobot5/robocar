@@ -155,7 +155,7 @@ def shouldgocheck(A, B, C):
     elif A==0 and B==1 and C==1:
         shouldgo="right"
     elif A==0 and B==0 and C==0:
-        print("FUCKFUCKFUCKFUCKFUCKFUCKFCUFKCUFKCUFKCFUKCUFKCUKFCUKFCUKFCUFKCUFKCUFKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCK")
+        shouldgo="left"
     else:
         print("cannot find the direction and the last one is: " ,shouldgo)
     return shouldgo
