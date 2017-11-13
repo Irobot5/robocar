@@ -168,10 +168,12 @@ def realdirection(shouldgo):
     #    time.sleep(0.02)
         if A==1 or B==1:
             forward()
+            rightmotor.start(50)
+            rightmotor.start(50)
             rightmotor.ChangeDutyCycle(65)
             leftmotor.ChangeDutyCycle(65)
         else:
-            return
+            pass
 
     elif shouldgo=="left":
         leftward()
