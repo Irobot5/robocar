@@ -163,13 +163,17 @@ def shouldgocheck(A, B, C):
 def realdirection(shouldgo):
     if shouldgo=="forward":
         forward()
-        rightmotor.start(70)
-        leftmotor.start(70)
-        time.sleep(0.02)
+        rightmotor.start(50)
+        leftmotor.start(50)
+    #    time.sleep(0.02)
+        while A==1 or B==1:
+            forward()
+            rightmotor.changecycle(65)
+            leftmotor.changecycle(65)
 
     elif shouldgo=="left":
         leftward()
-        rightmotor.start(60)
+        rightmotor.start(50)
         leftmotor.start(10)
         time.sleep(0.02)
 
@@ -182,7 +186,7 @@ def realdirection(shouldgo):
     elif shouldgo=="right":
         rightward()
         rightmotor.start(10)
-        leftmotor.start(60)
+        leftmotor.start(50)
         time.sleep(0.02)
 
 #    elif shouldgo == "whareevar":
