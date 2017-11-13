@@ -155,7 +155,7 @@ def shouldgocheck(A, B, C):
     elif A==0 and B==1 and C==1:
         shouldgo="right"
     elif A==0 and B==0 and C==0:
-        shouldgo="back"
+        print("FUCKFUCKFUCKFUCKFUCKFUCKFCUFKCUFKCUFKCFUKCUFKCUKFCUKFCUKFCUFKCUFKCUFKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCK")
     else:
         print("cannot find the direction and the last one is: " ,shouldgo)
     return shouldgo
@@ -170,6 +170,8 @@ def realdirection(shouldgo):
             forward()
             rightmotor.start(65)
             rightmotor.start(65)
+            time.sleep(0.02)
+
 
     elif shouldgo=="left":
         leftward()
@@ -182,12 +184,6 @@ def realdirection(shouldgo):
         rightmotor.start(10)
         leftmotor.start(50)
         time.sleep(0.02)
-
-    elif shouldgo=="back":
-        backward()
-        rightmotor.start(40)
-        leftmotor.start(40)
-        time.sleep(0.05)
 
     else:
         print("shouldgo has an invaild value")
