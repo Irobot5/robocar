@@ -168,10 +168,8 @@ def realdirection(shouldgo):
     #    time.sleep(0.02)
         if A==1 or B==1:
             forward()
-            rightmotor.start(50)
-            rightmotor.start(50)
-            rightmotor.ChangeDutyCycle(65)
-            leftmotor.ChangeDutyCycle(65)
+            rightmotor.start(65)
+            rightmotor.start(65)
         else:
             pass
 
@@ -181,23 +179,11 @@ def realdirection(shouldgo):
         leftmotor.start(10)
         time.sleep(0.02)
 
-    #elif shouldgo == "Modafucker":
-    #    leftward()
-    #    rightmotor.start(60)
-    #    leftmotor.start(30)
-    #    time.sleep(0.02)
-
     elif shouldgo=="right":
         rightward()
         rightmotor.start(10)
         leftmotor.start(50)
         time.sleep(0.02)
-
-#    elif shouldgo == "whareevar":
-#        rightward()
-#        rightmotor.start(30)
-#        leftmotor.start(60)
-#        time.sleep(0.02)
 
     elif shouldgo=="back":
         backward()
@@ -211,11 +197,14 @@ def realdirection(shouldgo):
 #run
 
 shouldgo="w"
-while True:
-    A = GPIO.input(IRsensor2)
-    B = GPIO.input(IRsensor1)
-    C = GPIO.input(IRsensor3)
-    realdirection(shouldgocheck(A, B, C))
-    signal.signal(signal.SIGINT, handler)
-    print(A, B, C)
-    time.sleep(0.01)
+try:
+    while True:
+        A = GPIO.input(IRsensor2)
+        B = GPIO.input(IRsensor1)
+        C = GPIO.input(IRsensor3)
+        realdirection(shouldgocheck(A, B, C))
+        signal.signal(signal.SIGINT, handler)
+        print(A, B, C)
+        time.sleep(0.01)
+except:
+    print("errrrrrrorororororororor")
