@@ -163,8 +163,8 @@ def shouldgocheck(A, B, C):
 def realdirection(shouldgo):
     if shouldgo=="forward":
         forward()
-        rightmotor.start(60)
-        leftmotor.start(60)
+        rightmotor.start(100)
+        leftmotor.start(100)
         time.sleep(0.05)
 
     elif shouldgo=="left":
