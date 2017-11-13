@@ -170,8 +170,6 @@ def realdirection(shouldgo):
             forward()
             rightmotor.start(65)
             rightmotor.start(65)
-        else:
-            pass
 
     elif shouldgo=="left":
         leftward()
