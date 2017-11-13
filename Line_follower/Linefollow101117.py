@@ -149,11 +149,11 @@ def shouldgocheck(A, B, C):
     elif A==0 and B==0 and C==1:
         shouldgo="right"
     elif A==1 and B==1 and C==0:
-        shouldgo="left"
+        shouldgo="Modafucker"
     elif A==1 and B==0 and C==1:
         shouldgo="forward"
     elif A==0 and B==1 and C==1:
-        shouldgo="right"
+        shouldgo="whareevar"
     elif A==0 and B==0 and C==0:
         shouldgo="back"
     else:
@@ -173,9 +173,21 @@ def realdirection(shouldgo):
         leftmotor.start(10)
         time.sleep(0.05)
 
+    elif shouldgo == "Modafucker":
+        Leftward()
+        rightmotor.start(60)
+        leftmotor.start(30)
+        time.sleep(0.05)
+
     elif shouldgo=="right":
         rightward()
         rightmotor.start(10)
+        leftmotor.start(60)
+        time.sleep(0.05)
+
+    elif shouldgo == "whareevar":
+        rightward()
+        rightmotor.start(30)
         leftmotor.start(60)
         time.sleep(0.05)
 
