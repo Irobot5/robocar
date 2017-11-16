@@ -78,7 +78,7 @@ try:
         A = GPIO.input(IRsensor2)
         B = GPIO.input(IRsensor1)
         C = GPIO.input(IRsensor3)
-        A+B+C
+        D = A+B+C
         if D==111 or 101 or 010:
             main()
             rightmotor.start(50)
