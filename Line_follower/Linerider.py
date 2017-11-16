@@ -75,9 +75,9 @@ def stop():
 
 try:
     while True:
-        A = GPIO.input(IRsensor2)
-        B = GPIO.input(IRsensor1)
-        C = GPIO.input(IRsensor3)
+        A = str(GPIO.input(IRsensor2))
+        B = str(GPIO.input(IRsensor1))
+        C = str(GPIO.input(IRsensor3))
         D = A+B+C
         if D==111 or 101 or 010:
             main()
