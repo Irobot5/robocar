@@ -72,6 +72,8 @@ def stop():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.LOW)
+rightmotor.start(0)
+leftmotor.start(0)
 try:
     while True:
         A = GPIO.input(IRsensor2)
@@ -79,24 +81,24 @@ try:
         C = GPIO.input(IRsensor3)
         if (A == 1 and B == 1 and C == 1) or (A == 0 and B == 1 and C == 0) or (A == 1 and B == 0 and C == 1) or (A==0 and B==0 and C==0):
             main()
-            rightmotor.start(40)
-            leftmotor.start(40)
+            rightmotor.ChangeDutyCycle(40)
+            leftmotor.ChangeDutyCycle(40)
         elif A==0 and B==1 and C==1:
             main()
-            rightmotor.start(35)
-            leftmotor.start(25)
+            rightmotor.ChangeDutyCycle(35)
+            leftmotor.ChangeDutyCycle(25)
         elif A==0 and B==0 and C==1:
             main()
-            rightmotor.start(0)
-            leftmotor.start(35)
+            rightmotor.ChangeDutyCycle(0)
+            leftmotor.ChangeDutyCycle(35)
         elif A==1 and B==1 and C==0:
             main()
-            rightmotor.start(25)
-            leftmotor.start(35)
+            rightmotor.ChangeDutyCycle(25)
+            leftmotor.ChangeDutyCycle(35)
         elif A==1 and B==0 and C==0:
             main()
-            rightmotor.start(35)
-            leftmotor.start(0)
+            rightmotor.ChangeDutyCycle(35)
+            leftmotor.ChangeDutyCycle(0)
         else:
             print("panic!!")
         signal.signal(signal.SIGINT, handler)

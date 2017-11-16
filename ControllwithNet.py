@@ -1,5 +1,4 @@
 import cherrypy
-import readchar
 import signal, os
 import RPi.GPIO as GPIO
 import time
@@ -46,7 +45,7 @@ signal.signal(signal.SIGINT, handler)
 leftmotor = GPIO.PWM(PWMA, 50)
 rightmotor = GPIO.PWM(PWMB, 50)
 
-class Fuckmylife(object):
+class Christianscript(object):
 	@cherrypy.expose
 	def index(self):
 		return WASDrightplace
@@ -165,4 +164,4 @@ leftmotor.start(0)
 
 
 cherrypy.server.socket_host = "0.0.0.0"  #0.0.0.0 =>  listen on all interfaces
-cherrypy.quickstart(Fuckmylife())
+cherrypy.quickstart(Christianscript())
