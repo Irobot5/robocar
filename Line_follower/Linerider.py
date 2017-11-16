@@ -84,23 +84,20 @@ try:
         elif A==0 and B==1 and C==1:
             main()
             rightmotor.start(45)
-            leftmotor.start(45)
+            leftmotor.start(25)
         elif A==0 and B==0 and C==1:
             main()
             rightmotor.start(0)
             leftmotor.start(45)
         elif A==1 and B==1 and C==0:
             main()
-            rightmotor.start(45)
+            rightmotor.start(25)
             leftmotor.start(45)
         elif A==1 and B==0 and C==0:
             main()
             rightmotor.start(45)
             leftmotor.start(0)
         else:
-            main()
-            rightmotor.start(45)
-            leftmotor.start(45)
             print("panic!!")
         signal.signal(signal.SIGINT, handler)
         print(A,B,C)
