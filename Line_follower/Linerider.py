@@ -75,31 +75,31 @@ def stop():
 
 try:
     while True:
-        A = str(GPIO.input(IRsensor2))
-        B = str(GPIO.input(IRsensor1))
-        C = str(GPIO.input(IRsensor3))
-        D = A+B+C
-        if D==111 or 101 or 010:
+        A = GPIO.input(IRsensor2)
+        B = GPIO.input(IRsensor1)
+        C = GPIO.input(IRsensor3)
+        if not (not (A == 1 and B == 1 and C == 1) and not (A == 0 and B == 1 and C == 0) and not (
+                    A == 1 and B == 0 and C == 1)):
             main()
-            rightmotor.start(50)
-            leftmotor.start(50)
+            rightmotor.start(45)
+            leftmotor.start(45)
             time.sleep(0.01)
-        elif D==011:
+        elif A==0 and B==1 and C==1:
             main()
             rightmotor.start(25)
             leftmotor.start(45)
             time.sleep(0.01)
-        elif D==001:
+        elif A==0 and B==0 and C==1:
             main()
             rightmotor.start(0)
             leftmotor.start(45)
             time.sleep(0.01)
-        elif D==110:
+        elif A==1 and B==1 and C==0:
             main()
             rightmotor.start(45)
             leftmotor.start(25)
             time.sleep(0.01)
-        elif D==100:
+        elif A==1 and B==0 and C==0:
             main()
             rightmotor.start(45)
             leftmotor.start(0)
@@ -107,6 +107,6 @@ try:
         else:
             print("panic!!")
         signal.signal(signal.SIGINT, handler)
-        print(D)
+        print(A,B,C)
 except:
     print("MRKLKRLRKR")
