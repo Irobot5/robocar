@@ -87,7 +87,7 @@ try:
         elif A==0 and B==1 and C==1:
             main()
             rightmotor.start(25)
-            leftmotor.start(50)
+            leftmotor.start(45)
             time.sleep(0.02)
         elif A==0 and B==0 and C==1:
             main()
@@ -96,7 +96,7 @@ try:
             time.sleep(0.02)
         elif A==1 and B==1 and C==0:
             main()
-            rightmotor.start(50)
+            rightmotor.start(45)
             leftmotor.start(25)
             time.sleep(0.02)
         elif A==1 and B==0 and C==0:
