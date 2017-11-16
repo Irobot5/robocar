@@ -78,35 +78,35 @@ try:
         A = GPIO.input(IRsensor2)
         B = GPIO.input(IRsensor1)
         C = GPIO.input(IRsensor3)
-        if not (not (A == 1 and B == 1 and C == 1) and not (A == 0 and B == 1 and C == 0) and not (
-                    A == 1 and B == 0 and C == 1)):
+        A+B+C
+        if D==111 or 101 or 010:
             main()
             rightmotor.start(50)
             leftmotor.start(50)
-            time.sleep(0.05)
-        elif A==0 and B==1 and C==1:
+            time.sleep(0.01)
+        elif D==011:
             main()
             rightmotor.start(25)
             leftmotor.start(45)
-            time.sleep(0.05)
-        elif A==0 and B==0 and C==1:
+            time.sleep(0.01)
+        elif D==001:
             main()
             rightmotor.start(0)
             leftmotor.start(45)
-            time.sleep(0.05)
-        elif A==1 and B==1 and C==0:
+            time.sleep(0.01)
+        elif D==110:
             main()
             rightmotor.start(45)
             leftmotor.start(25)
-            time.sleep(0.05)
-        elif A==1 and B==0 and C==0:
+            time.sleep(0.01)
+        elif D==100:
             main()
             rightmotor.start(45)
             leftmotor.start(0)
-            time.sleep(0.05)
+            time.sleep(0.01)
         else:
             print("panic!!")
         signal.signal(signal.SIGINT, handler)
-        print(A,B,C)
+        print(D)
 except:
     print("MRKLKRLRKR")
