@@ -101,5 +101,6 @@ try:
             print("panic!!")
         signal.signal(signal.SIGINT, handler)
         print(A,B,C)
+        time.sleep(0.02)
 except:
     print("MRKLKRLRKR")
