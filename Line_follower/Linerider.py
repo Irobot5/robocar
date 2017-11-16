@@ -78,8 +78,7 @@ try:
         A = GPIO.input(IRsensor2)
         B = GPIO.input(IRsensor1)
         C = GPIO.input(IRsensor3)
-        if (A == 1 and B == 1 and C == 1) and (A == 0 and B == 1 and C == 0) and (
-                            A == 1 and B == 0 and C == 1):
+        if (A == 1 and B == 1 and C == 1) and (A == 0 and B == 1 and C == 0) and (A == 1 and B == 0 and C == 1):
             main()
             rightmotor.start(45)
             leftmotor.start(45)
