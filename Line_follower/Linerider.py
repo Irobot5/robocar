@@ -39,9 +39,7 @@ GPIO.setup(PWMA, GPIO.OUT)
 GPIO.setup(BIN1, GPIO.OUT)
 GPIO.setup(BIN2, GPIO.OUT)
 GPIO.setup(PWMB, GPIO.OUT)
-A = GPIO.input(IRsensor2)
-B = GPIO.input(IRsensor1)
-C = GPIO.input(IRsensor3)
+
 
 # variables
 leftmotor = GPIO.PWM(PWMA, 50)
@@ -77,6 +75,9 @@ def stop():
 
 try:
     while True:
+        A = GPIO.input(IRsensor2)
+        B = GPIO.input(IRsensor1)
+        C = GPIO.input(IRsensor3)
         if not (not (A == 1 and B == 1 and C == 1) and not (A == 0 and B == 1 and C == 0) and not (
                     A == 1 and B == 0 and C == 1)):
             main()
