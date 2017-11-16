@@ -72,8 +72,6 @@ def stop():
     GPIO.output(BIN1, GPIO.LOW)
     GPIO.output(BIN2, GPIO.HIGH)
     GPIO.output(PWMB, GPIO.LOW)
-rightmotor.start(50)
-leftmotor.start(50)
 try:
     while True:
         A = GPIO.input(IRsensor2)
