@@ -91,7 +91,7 @@ try:
             time.sleep(0.02)
         elif A==0 and B==0 and C==1:
             main()
-            rightmotor.start(10)
+            rightmotor.start(0)
             leftmotor.start(45)
             time.sleep(0.02)
         elif A==1 and B==1 and C==0:
@@ -102,7 +102,7 @@ try:
         elif A==1 and B==0 and C==0:
             main()
             rightmotor.start(45)
-            leftmotor.start(10)
+            leftmotor.start(0)
             time.sleep(0.02)
         else:
             print("panic!!")
