@@ -79,23 +79,23 @@ try:
         C = GPIO.input(IRsensor3)
         if (A == 1 and B == 1 and C == 1) or (A == 0 and B == 1 and C == 0) or (A == 1 and B == 0 and C == 1) or (A==0 and B==0 and C==0):
             main()
-            rightmotor.start(50)
-            leftmotor.start(50)
+            rightmotor.start(40)
+            leftmotor.start(40)
         elif A==0 and B==1 and C==1:
             main()
-            rightmotor.start(45)
+            rightmotor.start(35)
             leftmotor.start(25)
         elif A==0 and B==0 and C==1:
             main()
             rightmotor.start(0)
-            leftmotor.start(45)
+            leftmotor.start(35)
         elif A==1 and B==1 and C==0:
             main()
             rightmotor.start(25)
-            leftmotor.start(45)
+            leftmotor.start(35)
         elif A==1 and B==0 and C==0:
             main()
-            rightmotor.start(45)
+            rightmotor.start(35)
             leftmotor.start(0)
         else:
             print("panic!!")
