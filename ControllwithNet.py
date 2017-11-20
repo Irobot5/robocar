@@ -54,10 +54,10 @@ class Christianscript(object):
 	def forward(self):
 		GPIO.output(AIN1, GPIO.LOW)
 		GPIO.output(AIN2, GPIO.HIGH)
-		GPIO.output(PWMA, GPIO.HIGH)
 		GPIO.output(BIN1, GPIO.LOW)
 		GPIO.output(BIN2, GPIO.HIGH)
-		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(100)#trouble running both motors at exact same speed.
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
@@ -66,10 +66,10 @@ class Christianscript(object):
 	def forright(self):
 		GPIO.output(AIN1, GPIO.LOW)
 		GPIO.output(AIN2, GPIO.HIGH)
-		GPIO.output(PWMA, GPIO.HIGH)
 		GPIO.output(BIN1, GPIO.LOW)
 		GPIO.output(BIN2, GPIO.HIGH)
-		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(85)
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
@@ -78,10 +78,10 @@ class Christianscript(object):
 	def forleft(self):
 		GPIO.output(AIN1, GPIO.LOW)
 		GPIO.output(AIN2, GPIO.HIGH)
-		GPIO.output(PWMA, GPIO.HIGH)
 		GPIO.output(BIN1, GPIO.LOW)
 		GPIO.output(BIN2, GPIO.HIGH)
-		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(100)
 		leftmotor.ChangeDutyCycle(85)
 		return WASDrightplace
@@ -90,10 +90,10 @@ class Christianscript(object):
 	def backward(self):
 		GPIO.output(AIN1, GPIO.HIGH)
 		GPIO.output(AIN2, GPIO.LOW)
-		GPIO.output(PWMA, GPIO.HIGH)
 		GPIO.output(BIN1, GPIO.HIGH)
 		GPIO.output(BIN2, GPIO.LOW)
-		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(100)
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
@@ -102,10 +102,10 @@ class Christianscript(object):
 	def backright(self):
 		GPIO.output(AIN1, GPIO.HIGH)
 		GPIO.output(AIN2, GPIO.LOW)
-		GPIO.output(PWMA, GPIO.HIGH)
 		GPIO.output(BIN1, GPIO.HIGH)
 		GPIO.output(BIN2, GPIO.LOW)
-		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(85)
 		leftmotor.ChangeDutyCycle(100)
 		return WASDrightplace
@@ -114,10 +114,10 @@ class Christianscript(object):
 	def backleft(self):
 		GPIO.output(AIN1, GPIO.HIGH)
 		GPIO.output(AIN2, GPIO.LOW)
-		GPIO.output(PWMA, GPIO.HIGH)
 		GPIO.output(BIN1, GPIO.HIGH)
 		GPIO.output(BIN2, GPIO.LOW)
-		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(100)
 		leftmotor.ChangeDutyCycle(85)
 		return WASDrightplace
@@ -126,10 +126,10 @@ class Christianscript(object):
 	def left(self):
 		GPIO.output(AIN1, GPIO.HIGH)
 		GPIO.output(AIN2, GPIO.LOW)
-		GPIO.output(PWMA, GPIO.HIGH)
 		GPIO.output(BIN1, GPIO.LOW)
 		GPIO.output(BIN2, GPIO.HIGH)
-		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(30)
 		leftmotor.ChangeDutyCycle(30)
 		return WASDrightplace
@@ -138,10 +138,10 @@ class Christianscript(object):
 	def right(self):
 		GPIO.output(AIN1, GPIO.LOW)
 		GPIO.output(AIN2, GPIO.HIGH)
-		GPIO.output(PWMA, GPIO.HIGH)
 		GPIO.output(BIN1, GPIO.HIGH)
 		GPIO.output(BIN2, GPIO.LOW)
-		GPIO.output(PWMB, GPIO.HIGH)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(30)
 		leftmotor.ChangeDutyCycle(30)
 		return WASDrightplace
@@ -150,10 +150,10 @@ class Christianscript(object):
 	def stop(self):
 		GPIO.output(AIN1, GPIO.LOW)
 		GPIO.output(AIN2, GPIO.HIGH)
-		GPIO.output(PWMA, GPIO.LOW)
 		GPIO.output(BIN1, GPIO.LOW)
 		GPIO.output(BIN2, GPIO.HIGH)
-		GPIO.output(PWMB, GPIO.LOW)
+		rightmotor.start(0)
+		leftmotor.start(0)
 		rightmotor.ChangeDutyCycle(0)
 		leftmotor.ChangeDutyCycle(0)
 		return WASDrightplace
