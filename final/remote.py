@@ -45,7 +45,7 @@ signal.signal(signal.SIGINT, handler)
 
 
 
-class Christianscript(object):
+class movements(object):
 	@cherrypy.expose
 	def index(self):
 		return WASDrightplace
@@ -160,4 +160,4 @@ class Christianscript(object):
 # program
 
 cherrypy.server.socket_host = "0.0.0.0"  #0.0.0.0 =>  listen on all interfaces
-cherrypy.quickstart(Christianscript())
+cherrypy.quickstart(movements())
