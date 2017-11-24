@@ -40,9 +40,6 @@ GPIO.setup(BIN1, GPIO.OUT)
 GPIO.setup(BIN2, GPIO.OUT)
 GPIO.setup(PWMB, GPIO.OUT)
 
-A = GPIO.input(IRsensor2)
-B = GPIO.input(IRsensor1)
-C = GPIO.input(IRsensor3)
 
 # variables
 rightmotor = GPIO.PWM(PWMA, 50)
@@ -149,6 +146,9 @@ def realdirection(shouldgo):
 
 shouldgo="w"
 while True:
+    A = GPIO.input(IRsensor2)
+    B = GPIO.input(IRsensor1)
+    C = GPIO.input(IRsensor3)
     realdirection(shouldgocheck(A, B, C))
     signal.signal(signal.SIGINT, handler)
     print(A, B, C)
