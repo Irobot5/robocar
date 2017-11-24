@@ -21,8 +21,8 @@ IRsensor3 = 6     #right
 
 # Pin Setup:
 GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
-GPIO.setup(triggerpina,GPIO.OUT)
-GPIO.setup(echopina,GPIO.IN)
+GPIO.setup(triggerpin,GPIO.OUT)
+GPIO.setup(echopin,GPIO.IN)
 GPIO.setup(IRsensor1, GPIO.IN) # sensor set as input
 GPIO.setup(IRsensor2, GPIO.IN)
 GPIO.setup(IRsensor3, GPIO.IN)
