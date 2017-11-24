@@ -18,9 +18,6 @@ IRsensor1 = 5       #mid
 IRsensor2 = 4     #left
 IRsensor3 = 6     #right
 
-A = GPIO.input(IRsensor2)
-B = GPIO.input(IRsensor1)
-C = GPIO.input(IRsensor3)
 
 # Pin Setup:
 GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
@@ -37,6 +34,10 @@ GPIO.setup(BIN1, GPIO.OUT)
 GPIO.setup(BIN2, GPIO.OUT)
 GPIO.setup(PWMB, GPIO.OUT)
 
+
+A = GPIO.input(IRsensor2)
+B = GPIO.input(IRsensor1)
+C = GPIO.input(IRsensor3)
 
 #assinging motor variables
 leftmotor = GPIO.PWM(PWMA, 50) #frequency and what the motor pin is
