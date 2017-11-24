@@ -32,10 +32,8 @@ leftmotor = GPIO.PWM(PWMA, 50)
 rightmotor = GPIO.PWM(PWMB, 50)
 
 def handler(signum, frame):  # stop when ctrl-c is recieved
-	print
-	'Signal handler called with signal', signum
-	print
-	'exiting'
+	print('Signal handler called with signal', signum)
+	print('exiting')
 	GPIO.output(PWMA, GPIO.LOW)
 	GPIO.output(PWMB, GPIO.LOW)
 	GPIO.cleanup()
