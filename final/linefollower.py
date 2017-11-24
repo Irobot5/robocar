@@ -26,6 +26,7 @@ IRsensor1 = 5       #mid
 IRsensor2 = 4     #left
 IRsensor3 = 6     #right
 
+
 # Pin Setup:
 GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
 GPIO.setup(IRsensor1, GPIO.IN) # sensor set as input
@@ -39,13 +40,17 @@ GPIO.setup(BIN1, GPIO.OUT)
 GPIO.setup(BIN2, GPIO.OUT)
 GPIO.setup(PWMB, GPIO.OUT)
 
+A = GPIO.input(IRsensor2)
+B = GPIO.input(IRsensor1)
+C = GPIO.input(IRsensor3)
+
 # variables
 rightmotor = GPIO.PWM(PWMA, 50)
 leftmotor = GPIO.PWM(PWMB, 50)
 
 def handler(signum, frame):  #stop when ctrl-c is recieved
-    print 'Signal handler called with signal', signum
-    print 'exiting'
+    print ('Signal handler called with signal', signum)
+    print ('exiting')
     GPIO.output(PWMA, GPIO.LOW)
     GPIO.output(PWMB, GPIO.LOW)
     GPIO.cleanup()
@@ -141,17 +146,14 @@ def realdirection(shouldgo):
 
 #run
 
-rightmotor.start(0)
-leftmotor.start(0)
+
 shouldgo="w"
 while True:
-    A = GPIO.input(IRsensor2)
-    B = GPIO.input(IRsensor1)
-    C = GPIO.input(IRsensor3)
     realdirection(shouldgocheck(A, B, C))
     signal.signal(signal.SIGINT, handler)
     print(A, B, C)
     time.sleep(0.01)
+
 
 
 

@@ -43,8 +43,8 @@ leftmotor = GPIO.PWM(PWMA, 50) #frequency and what the motor pin is
 rightmotor = GPIO.PWM(PWMB, 50)
 
 def handler(signum, frame):  #stop when ctrl-c is recieved or else you die
-    print 'Signal handler called with signal', signum
-    print 'exiting'
+    print ('Signal handler called with signal', signum)
+    print ('exiting')
     GPIO.output(PWMA, GPIO.LOW)#turning off the motor or else the car would be left on and keep driving after exit
     GPIO.output(PWMB, GPIO.LOW)
     GPIO.cleanup()#simple cleanup setting all pins back to original state(input)
