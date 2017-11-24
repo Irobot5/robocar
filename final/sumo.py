@@ -35,10 +35,6 @@ GPIO.setup(BIN2, GPIO.OUT)
 GPIO.setup(PWMB, GPIO.OUT)
 
 
-A = GPIO.input(IRsensor2)
-B = GPIO.input(IRsensor1)
-C = GPIO.input(IRsensor3)
-
 #assinging motor variables
 leftmotor = GPIO.PWM(PWMA, 50) #frequency and what the motor pin is
 rightmotor = GPIO.PWM(PWMB, 50)
@@ -116,6 +112,9 @@ the should not driver over any black lines"""
 
 
 while True:
+    A = GPIO.input(IRsensor2)
+    B = GPIO.input(IRsensor1)
+    C = GPIO.input(IRsensor3)
     realdistence = reading(0)
     signal.signal(signal.SIGINT, handler)
     print(realdistence)
