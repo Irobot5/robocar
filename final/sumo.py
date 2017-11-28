@@ -120,7 +120,7 @@ while True:
     print(realdistence)
     print(A, B, C)
     if A == 1 or B == 1 or C == 1:
-        for hk in range(0, 100):
+        for hk in range(0, 50000):
             hk= hk+1
             backward()
     else:
